@@ -5,6 +5,13 @@
 {% block body %}
 
     <div class="container mt-5">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         <div class="row">
             <div class="col-sm-3">
                 <div class="container card-profil text-center ">
@@ -16,7 +23,6 @@
                     {% endif %}
                     {% if user is same as(app.user) %}
                         <div class="mt-3">
-                            <a href="#" class="btn btn-warning mr-2 mb-2">Modifier mes informations</a>
                             <a href="#" class="btn btn-info mb-2">Modifier mon mot de passe</a>
                         </div>
                     {% endif %}
@@ -25,12 +31,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="container-fluid card-description">
-                    <h3>{{ user.lastname }} {{ user.firstname }}</h3>
-                    <p>Email: {{ user.email }}</p>
-                    <p>Age: {{ user.age }}</p>
-                    <p>Description: {{ user.description }}</p>
-                    <h3"> Centre d'interet</h3>
-                    <p> #SPORT #DESSIN #JEUX VIDEOS</p>
+
+                    {{ include('account/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
                 </div>
             </div>
         </div>

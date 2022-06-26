@@ -18,41 +18,10 @@
                             <label for="password">Password:</label>
                             <input class="form-control"  type="password" id="password" name="_password"/>
                         </div>
-                        <button class="btn btn-primary mt-5" type="submit">login</button>
+                        <button class="btn btn-primary mt-5" type="submit">Connexion</button>
+                        <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+
                     </form>
-
-{#                    <div class="row">#}
-{#                        <div class="col-6">#}
-{#                            {{ form_row(registrationForm.email) }}#}
-{#                        </div>#}
-{#                        <div class="col-6">#}
-{#                            {{ form_row(registrationForm.age) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="row">#}
-{#                        <div class="col-6">#}
-{#                            {{ form_row(registrationForm.firstname) }}#}
-{#                        </div>#}
-{#                        <div class="col-6">#}
-{#                            {{ form_row(registrationForm.lastname) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="row">#}
-{#                        <div class="col-6">#}
-{#                            {{ form_row(registrationForm.image) }}#}
-{#                        </div>#}
-{#                        <div class="col-6">#}
-{#                            {{ form_row(registrationForm.plainPassword, {#}
-{#                                label: 'Password'#}
-{#                            }) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    {{ form_row(registrationForm.description) }}#}
-{#                    {{ form_row(registrationForm.agreeTerms) }}#}
-
-{#                    <button type="submit" class="btn btn-success">Register</button>#}
-{#                    {{ form_end(registrationForm) }}#}
-{#                </div>#}
             </div>
         </div>
     </div>
