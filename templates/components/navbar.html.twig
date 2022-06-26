@@ -18,7 +18,7 @@
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Profil</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_account', {'id': app.user.id}) }}">Profil</a></li>
                         <li><a class="dropdown-item" href="#">Mes évenements</a></li>
                         <li>
                             <hr class="dropdown-divider">

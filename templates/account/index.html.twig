@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de {{user.firstname}}{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="container card-profil text-center ">
+                    {% if user.image|length > 0 %}
+                        <img src="#" class="avatar" alt="Avatar">
+                    {% else %}
+                        <img src="https://i.pravatar.cc/300" class="avatar" alt="Avatar">
+
+                    {% endif %}
+                    {% if user is same as(app.user) %}
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-warning mr-2 mb-2">Modifier mes informations</a>
+                            <a href="#" class="btn btn-info mb-2">Modifier mon mot de passe</a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="container-fluid card-description">
+                    <h3>{{ user.lastname }} {{ user.firstname }}</h3>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Age: {{ user.age }}</p>
+                    <p>Description: {{ user.description }}</p>
+                    <h3"> Centre d'interet</h3>
+                    <p> #SPORT #DESSIN #JEUX VIDEOS</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-3 divider-profil">
+                <h5>MES EVENEMENTS</h5>
+            </div>
+            <div class="col-9 divider-profil">
+                <hr>
+            </div>
+        </div>
+
+        {% if user.events | length > 0 %}
+            <div class="row">
+                {% for event in user.events %}
+                    {% set url = path('app_event_show', {'id': event.id}) %}
+
+                    <div class="col-md-4">
+                        <div class="card card-profil-event mb-3">
+                            <div class="card-header text-center">
+                                <h4 class="card-title">
+                                    <a  class="title-card-profil" href="{{ url }}">
+                                        {{ event.title }}
+                                    </a>
+                                </h4>
+
+
+                            </div>
+
+                            <a href="{{ url }}">
+                                <img src="#"  style="height: 200px; width: 100%; display: block">
+                            </a>
+
+                            <div class="card-body">
+                                <p>
+                                    <strong>Lieu : {{ event.place }}</strong><br>
+                                    <strong>Date  : {{ event.startAt | date('d/m/y') }}</strong><br>
+                                    <strong>Heure : {{ event.startAt | date('h:i') }}</strong><br>
+                                    <strong>Nombre de place : {{ event.availablePlace }}</strong><br>
+                                    <strong>Budget / par personne : {{ event.price }} Euros</strong>
+                                </p>
+                                <a href="{{ url }}" class="btn btn-secondary">En savoir plus !</a>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                <p>
+                    <strong>{{user.firstname}}</strong> n'a pas encore d'événements sur le site !
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
